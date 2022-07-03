@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: discovery
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: false
+
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+      waitTimeInMsWhenSyncEmpty: 0

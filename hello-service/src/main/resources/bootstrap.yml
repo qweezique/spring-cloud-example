@@ -6,13 +6,18 @@ server:
 spring:
   application:
     name: hello-service
+  rabbitmq:
+    addresses: ${RABBITMQ_SERVICE_SERVICE_HOST:localhost}
   cloud:
     config:
       fail-fast: true
       discovery:
         service-id: config
         enabled: true
-
+    bus:
+      enabled: true
+      refresh:
+        enabled: true
 
 
 eureka:
@@ -20,5 +25,5 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
     registerWithEureka: true
-    fetchRegistry: false
+    fetchRegistry: true
     enabled: true

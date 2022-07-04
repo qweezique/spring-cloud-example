@@ -25,8 +25,9 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.springframework.cloud:spring-cloud-starter")
 	implementation("org.springframework.cloud:spring-cloud-starter-config")
+	implementation("org.springframework.cloud:spring-cloud-starter-bus-amqp")
 	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
-	implementation("org.springframework.cloud:spring-cloud-starter-bootstrap:3.1.3")
+	implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

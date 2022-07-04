@@ -1,14 +1,20 @@
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: gateway
+
 server:
   port: 8585
-#spring.cloud.netflix.ribbon=true
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
     registerWithEureka: true
-    fetchRegistry: false
-    enabled: true
 
 spring:
   application:
@@ -22,11 +28,10 @@ spring:
           url-expression: "uri"
       routes:
         - id: hello_route
-          uri: lb:http://hello-service/hello
+          uri: lb://hello-service/hello
           predicates:
             - Path=/hello
         - id: goodbye_route
-          uri: http://localhost:8282/goodbye
-#          uri: lb:http://goodbye-service/goodbye #loadbalancer now work -> 503
+          uri: lb://goodbye-service/goodbye
           predicates:
             - Path=/goodbye

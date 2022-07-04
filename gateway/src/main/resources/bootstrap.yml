@@ -5,7 +5,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8080/eureka/
+      defaultZone: http://localhost:8761/eureka/
     registerWithEureka: true
     fetchRegistry: false
     enabled: true
@@ -17,18 +17,16 @@ spring:
     gateway:
       discovery:
         locator:
-          lower-case-service-id: true
           enabled: true
+          lower-case-service-id: true
+          url-expression: "uri"
       routes:
         - id: hello_route
-          uri: lb://hello-service/hello
+          uri: lb:http://hello-service/hello
           predicates:
             - Path=/hello
         - id: goodbye_route
-          #          uri: http://localhost:8383/goodbye
-          uri: lb://goodbye-service/goodbye #loadbalancer now work -> 503
+          uri: http://localhost:8282/goodbye
+#          uri: lb:http://goodbye-service/goodbye #loadbalancer now work -> 503
           predicates:
             - Path=/goodbye
-
-
-

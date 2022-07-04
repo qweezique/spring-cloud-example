@@ -25,4 +25,7 @@ class HelloController {
 
     @GetMapping("/general")
     fun getGeneral(): String = generalMessage ?: CONFIG_SERVER_ERROR
+
+    @GetMapping("/general/test")
+    fun getTest(): String = "Test message"
 }

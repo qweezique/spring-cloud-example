@@ -28,10 +28,10 @@ spring:
           url-expression: "uri"
       routes:
         - id: hello_route
-          uri: lb://hello-service/hello
+          uri: lb://hello-service/
           predicates:
-            - Path=/hello
+            - Path=/hello/**
         - id: goodbye_route
-          uri: lb://goodbye-service/goodbye
+          uri: lb://goodbye-service/
           predicates:
-            - Path=/goodbye
+            - Path=/goodbye/**

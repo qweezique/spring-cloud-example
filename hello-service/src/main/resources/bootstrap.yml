@@ -7,7 +7,7 @@ spring:
   application:
     name: hello-service
   rabbitmq:
-    addresses: ${RABBITMQ_SERVICE_SERVICE_HOST:localhost}
+    addresses: ${RABBITMQ_SERVICE_HOST:localhost}
   cloud:
     config:
       fail-fast: true
@@ -23,7 +23,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: ${DISCOVERY_SERVICE_URL:http://localhost:8761/eureka/}
     registerWithEureka: true
     fetchRegistry: true
     enabled: true

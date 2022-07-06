@@ -1,2 +1,3 @@
 # spring-cloud-example
-Based on discovery, config server with GIT
+Базируется на Eureka Server (Service Discovery), 
+Config Server (git repository), Gateway

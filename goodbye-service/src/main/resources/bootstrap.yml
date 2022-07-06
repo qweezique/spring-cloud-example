@@ -7,7 +7,7 @@ spring:
   application:
     name: goodbye-service
   rabbitmq:
-    addresses: ${RABBITMQ_SERVICE_SERVICE_HOST:localhost}
+    addresses: ${RABBITMQ_SERVICE_HOST:localhost}
   cloud:
     config:
       fail-fast: true

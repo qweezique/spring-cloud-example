@@ -18,6 +18,8 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
 
     implementation(libs.kotlin.logger)
+    implementation(libs.logback)
+
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

@@ -18,5 +18,9 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
 
 	implementation(libs.kotlin.logger)
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation(libs.logback)
+
+	testImplementation("org.springframework.boot:spring-boot-starter-test"){
+		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
+	}
 }

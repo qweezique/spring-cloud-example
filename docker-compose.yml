@@ -1,0 +1,18 @@
+services:
+  discovery:
+    image: discovery
+    ports:
+      - 8080:8080
+    environment:
+      - EUREKA_HOST=http://discovery:8080/eureka/
+  backend:
+    image: backend
+    environment:
+      - RABBITMQ_SERVICE_HOST=host.docker.internal
+      - EUREKA_HOST=http://discovery:8080/eureka/
+  frontend:
+    image: frontend
+    ports:
+      - 8081:8081
+    environment:
+      - EUREKA_HOST=http://discovery:8080/eureka/

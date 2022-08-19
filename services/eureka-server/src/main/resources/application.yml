@@ -6,12 +6,13 @@ spring:
     name: discovery
 
 eureka:
-  instance:
-    hostname: localhost
-    prefer-ip-address: true
-
+#  instance:
+#    hostname: ${DISCOVERY_SERVICE_URL:http://localhost:8761/eureka/}
+#    preferIpAddress: true
   client:
     registerWithEureka: false
     fetchRegistry: false
+    serviceUrl:
+      defaultZone: ${DISCOVERY_SERVICE_URL:http://localhost:8761/eureka/}
   server:
       waitTimeInMsWhenSyncEmpty: 0

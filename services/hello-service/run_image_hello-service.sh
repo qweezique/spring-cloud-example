@@ -1,16 +1,11 @@
-docker run -d \
---name=hello-service \
---env="RABBITMQ_SERVICE_HOST=host.docker.internal" \
---env="DISCOVERY_SERVICE_URL=http://eureka-server:8761/eureka/" \
---network="myTestNetwork" \
--p 0.0.0.0:8181:8181 \
-hello-service
-
-
+docker rm hello-service -f
 docker run -d \
 --name=hello-service \
 --env="RABBITMQ_SERVICE_HOST=rabbitmq-cloudbus" \
---env="DISCOVERY_SERVICE_URL=http://eureka-server:8761/eureka/" \
+--env="DISCOVERY_SERVICE_URL=eureka-server:8761" \
+--env="SPRING_PROFILES_ACTIVE=default" \
 --network="myTestNetwork" \
 -p 0.0.0.0:8181:8181 \
-hello-service
+local/hello-service:latest
+
+docker logs hello-service -f

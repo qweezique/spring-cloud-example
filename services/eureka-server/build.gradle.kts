@@ -19,14 +19,14 @@ dependencies {
 
 jib {
     from.image = "azul/zulu-openjdk:17.0.2-17.32.13-arm64"
-    to.image = "local/${project.name}:${project.version}"
+    to.image = "local/${project.name}:latest"
     container.creationTime = Instant.now().toString()
 }
 tasks.register("docker-run") {
     dependsOn("jibDockerBuild")
     doLast {
         exec {
-            commandLine("./run_image_eureka-server.sh")
+            commandLine("./run_image_${project.name}.sh")
         }
     }
 }

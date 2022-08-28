@@ -4,14 +4,17 @@ server:
 
 spring:
   rabbitmq:
-    addresses: ${RABBITMQ_SERVICE_SERVICE_HOST:localhost}
+    addresses: ${RABBITMQ_SERVICE_HOST:localhost}
   application:
     name: config
   cloud:
+    inetutils:
+      preferred-networks: ${PREFERRED_NETWORK:}
     config:
       server:
         git:
           uri: https://github.com/qweezique/spring-cloud-config-server.git
+          skipSslValidation: true
           clone-on-start: true
           default-label: master
           search-paths: '{profile}'
@@ -21,9 +24,19 @@ spring:
 eureka:
   instance:
     instance-id: config-${random.uuid}
+#    hostname: localhost
   client:
     serviceUrl:
-      defaultZone: ${DISCOVERY_SERVICE_URL:http://localhost:8761/eureka/}
+      defaultZone: http://${DISCOVERY_SERVICE_URL:localhost:8761}/eureka/
     registerWithEureka: true
     fetchRegistry: true
     enabled: true
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+eureka:
+  instance:
+    hostname: localhost

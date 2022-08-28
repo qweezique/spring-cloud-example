@@ -1,6 +1,11 @@
+docker rm gateway -f
 docker run -d \
 --name=gateway \
---network=myTestNetwork \
---env="DISCOVERY_SERVICE_URL=http://eureka-server:8761/eureka/" \
+--env="RABBITMQ_SERVICE_HOST=rabbitmq-cloudbus" \
+--env="DISCOVERY_SERVICE_URL=eureka-server:8761" \
+--env="SPRING_PROFILES_ACTIVE=default" \
+--network="myTestNetwork" \
 -p 0.0.0.0:8585:8585 \
-gateway
+local/gateway:latest
+
+docker logs gateway -f

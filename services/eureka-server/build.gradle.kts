@@ -22,16 +22,22 @@ jib {
     to.image = "local/${project.name}:${project.version}"
     container.creationTime = Instant.now().toString()
 }
-
+tasks.register("docker-run") {
+    dependsOn("jibDockerBuild")
+    doLast {
+        exec {
+            commandLine("./run_image_eureka-server.sh")
+        }
+    }
+}
 tasks.register("hello") {
     doFirst {
         println("hello Gradle ${gradle.gradleVersion} from ${project.name}")
     }
 }
-
 tasks.register("goodbye") {
+    dependsOn("hello")
     doFirst {
         println("goodbye Gradle")
     }
-    dependsOn("hello")
 }

@@ -1,3 +1,4 @@
+docker stop config-server
 docker rm config-server -f
 docker run -d \
 --name=config-server \

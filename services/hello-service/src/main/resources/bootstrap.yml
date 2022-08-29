@@ -10,7 +10,7 @@ spring:
     addresses: ${RABBITMQ_SERVICE_HOST:localhost}
   cloud:
     inetutils:
-      preferred-networks: ${PREFERRED_NETWORK:192.168}
+      preferred-networks: ${PREFERRED_NETWORK:}
     config:
       fail-fast: true
       discovery:
